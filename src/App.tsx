@@ -1,14 +1,15 @@
 import React from 'react';
 import './App.css';
 
+import Form from "./Components/Form";
 import Footer from "./Components/Footer";
 
 function App() {
   return (
     <div className="App">
-       <h1 className="text-3xl font-bold underline">
-          Hello world!
-      </h1>
+      <div>
+        <Form />
+      </div>
       <Footer />
     </div>
   );
