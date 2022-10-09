@@ -3,42 +3,54 @@ import { LoverInterface } from "./Form";
 
 interface LoverTableInterface {
   lovers: LoverInterface[];
+  deleteLover: (index: number) => void;
+  changeLover: (index: number, newLover: LoverInterface) => void;
 }
 
-function LoverTable({ lovers } : LoverTableInterface) {
+function LoverTable({ lovers, deleteLover, changeLover } : LoverTableInterface) {
   return (
     <div className="overflow-x-auto">
       <table className="table table-zebra w-full">
         <thead className="bg-warning-content">
-          <tr>
-            <th></th>
+          <tr className="text-black">
             <th>Name</th>
-            <th>Job</th>
-            <th>Favorite Color</th>
+            <th>Love's rate</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-        
-          <tr>
-            <th>1</th>
-            <td>Cy Ganderton</td>
-            <td>Quality Control Specialist</td>
-            <td>Blue</td>
-          </tr>
-        
-          <tr>
-            <th>2</th>
-            <td>Hart Hagerty</td>
-            <td>Desktop Support Technician</td>
-            <td>Purple</td>
-          </tr>
-        
-          <tr>
-            <th>3</th>
-            <td>Brice Swyre</td>
-            <td>Tax Accountant</td>
-            <td>Red</td>
-          </tr>
+        { lovers.map((lover, index) => {
+          return (
+              <tr className="text-neutral">
+                <td>
+                  {
+                    lover.edited ?
+                    <input />
+                    :
+                    lover.name
+                  }
+
+                </td>
+                <td>
+                  {
+                    lover.edited ?
+                    <input />
+                    :
+                    lover.percentage
+                  }
+                </td>
+                <td>
+                  {
+                    lovers.length > 1 ?
+                      <button onClick={() => changeLover(index, {...lover, edited: !lover.edited})}>🖊️</button>
+                    : <></>
+                  }
+                  <button onClick={() => deleteLover(index)}>🗑️</button>
+                </td>
+              </tr>
+            );
+          })
+        }
         </tbody>
       </table>
     </div>
