@@ -5,9 +5,20 @@ interface LoverTableInterface {
   lovers: LoverInterface[];
   deleteLover: (index: number) => void;
   changeLover: (index: number, newLover: LoverInterface) => void;
+  toggleLover: (index: number) => void;
 }
 
-function LoverTable({ lovers, deleteLover, changeLover } : LoverTableInterface) {
+function LoverTable({ lovers, deleteLover, changeLover, toggleLover } : LoverTableInterface) {
+
+
+  function onChangeLoverRate(index: number, value: string, lover: LoverInterface) {
+    changeLover(index, {...lover, percentage: parseInt(value)});
+  }
+
+  function onChangeLoverName(index: number, value: string, lover: LoverInterface) {
+    changeLover(index, {...lover, name: value});
+  }
+
   return (
     <div className="overflow-x-auto">
       <table className="table table-zebra w-full">
@@ -25,7 +36,11 @@ function LoverTable({ lovers, deleteLover, changeLover } : LoverTableInterface) 
                 <td>
                   {
                     lover.edited ?
-                    <input />
+                    <input
+                      type="text"
+                      className="input input-bordered"
+                      onBlur={(e) => onChangeLoverName(index, e.target.value, lover)}
+                    />
                     :
                     lover.name
                   }
@@ -34,15 +49,21 @@ function LoverTable({ lovers, deleteLover, changeLover } : LoverTableInterface) 
                 <td>
                   {
                     lover.edited ?
-                    <input />
+                    <input
+                      type="number"
+                      className="input input-bordered"
+                      min="1"
+                      max="100"
+                      onBlur={(e) => onChangeLoverRate(index, e.target.value, lover)}
+                    />
                     :
-                    lover.percentage
+                    lover.percentage + " %"
                   }
                 </td>
                 <td>
                   {
                     lovers.length > 1 ?
-                      <button onClick={() => changeLover(index, {...lover, edited: !lover.edited})}>🖊️</button>
+                      <button onClick={() => toggleLover(index)}>🖊️</button>
                     : <></>
                   }
                   <button onClick={() => deleteLover(index)}>🗑️</button>
