@@ -38,6 +38,7 @@ function Form() {
   }
 
   function toggleLover(index: number) {
+    console.log(index)
     const newLovers = lovers.map((lover, position) => {
       if(position === index) {
         return { ...lover, edited: !lover.edited };
@@ -72,7 +73,7 @@ function Form() {
       <div className="card-body items-center text-center">
         <h2 className="card-title">what does your heart look like ? 💛</h2>
         { error ? <ErrorForm message={error} /> : <></> }
-        <div className="indicator">
+        <div className="indicator w-3/4">
           <div className="indicator-item indicator-bottom">
             <button className="btn btn-primary" onClick={() => addLover()}>➕</button>
           </div>

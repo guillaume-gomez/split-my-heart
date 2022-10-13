@@ -20,7 +20,6 @@ function LoverTable({ lovers, deleteLover, changeLover, toggleLover } : LoverTab
   }
 
   return (
-    <div className="overflow-x-auto">
       <table className="table table-zebra w-full">
         <thead className="bg-warning-content">
           <tr className="text-black">
@@ -74,7 +73,6 @@ function LoverTable({ lovers, deleteLover, changeLover, toggleLover } : LoverTab
         }
         </tbody>
       </table>
-    </div>
   );
 }
 export default LoverTable;
