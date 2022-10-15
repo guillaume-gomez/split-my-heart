@@ -22,7 +22,8 @@ function Form() {
   }
 
   function addLover() {
-    const newLovers = [...lovers, defaultLover];
+    const newLover = {...defaultLover, name: `Your lover ${lovers.length}`}
+    const newLovers = [...lovers, newLover];
     setLovers(newLovers);
   }
 
