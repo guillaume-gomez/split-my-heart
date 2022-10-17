@@ -2,8 +2,10 @@ import React from 'react';
 import './App.css';
 
 import Footer from "./Components/Footer";
-import FillYourHeart from "./Views/FillYourHeart";
 import Header from "./Components/Header";
+
+import FillYourHeart from "./Views/FillYourHeart";
+import SplitMyHeartCanvas from "./Components/SplitMyHeartCanvas";
 
 import {
   createBrowserRouter,
@@ -17,6 +19,10 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <FillYourHeart />,
+  },
+  {
+    path: "about",
+    element: <SplitMyHeartCanvas />,
   },
 ]);
 
