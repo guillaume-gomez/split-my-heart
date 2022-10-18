@@ -1,41 +1,39 @@
 import React from 'react';
 import './App.css';
 
-import Footer from "./Components/Footer";
-import Header from "./Components/Header";
-
+import ReactRouterRoot from "./Views/ReactRouterRoot";
+import ErrorPage from "./Views/ErrorPage";
 import FillYourHeart from "./Views/FillYourHeart";
 import SplitMyHeartCanvas from "./Components/SplitMyHeartCanvas";
 
 import {
   createBrowserRouter,
   RouterProvider,
-  Route,
+  createRoutesFromElements,
+  Route
 } from "react-router-dom";
 
 
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <FillYourHeart />,
-  },
-  {
-    path: "about",
-    element: <SplitMyHeartCanvas />,
-  },
-]);
+const router = createBrowserRouter(
+   createRoutesFromElements(
+     <Route
+        path="/"
+        element={<ReactRouterRoot />}
+     >
+       <Route errorElement={<ErrorPage />}>
+         <Route index element={<FillYourHeart />} />
+         <Route path="/about" element={<SplitMyHeartCanvas />} />
+         <Route path="/rawanita" element={<FillYourHeart />} />
+       </Route>
+     </Route>
+   )
+);
 
 
 function App() {
   return (
-    <div className="App">
-      <div className="flex flex-col gap-5 items-center">
-        <Header />
-         <RouterProvider router={router} />
-        <Footer />
-      </div>
-    </div>
+    <RouterProvider router={router} />
   );
 }
 
