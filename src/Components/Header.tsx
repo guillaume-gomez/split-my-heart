@@ -16,7 +16,7 @@ function Header() {
     </div>
   </div>
   <div className="navbar-center">
-    <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+    <Link to={"/"} className="btn btn-ghost normal-case text-xl">Lovers</Link>
   </div>
   <div className="navbar-end">
   </div>
