@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from "react-router-dom";
 
 function Header() {
+
+
+
   return (
     <div className="navbar bg-base-100">
   <div className="navbar-start">
