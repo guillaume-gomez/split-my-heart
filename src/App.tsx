@@ -4,7 +4,7 @@ import './App.css';
 import ReactRouterRoot from "./Views/ReactRouterRoot";
 import ErrorPage from "./Views/ErrorPage";
 import FillYourHeart from "./Views/FillYourHeart";
-import SplitMyHeartCanvas from "./Components/SplitMyHeartCanvas";
+import FillYourHeartResult from "./Views/FillYourHeartResult";
 
 import {
   createBrowserRouter,
