@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { LoverInterface } from "./Form";
+import Range from "./Range";
 
 interface LoverTableInterface {
   lovers: LoverInterface[];
@@ -11,8 +12,8 @@ interface LoverTableInterface {
 function LoverTable({ lovers, deleteLover, changeLover, toggleLover } : LoverTableInterface) {
 
 
-  function onChangeLoverRate(index: number, value: string, lover: LoverInterface) {
-    changeLover(index, {...lover, percentage: parseInt(value)});
+  function onChangeLoverRate(index: number, value: number, lover: LoverInterface) {
+    changeLover(index, {...lover, percentage: value});
   }
 
   function onChangeLoverName(index: number, value: string, lover: LoverInterface) {
@@ -48,12 +49,9 @@ function LoverTable({ lovers, deleteLover, changeLover, toggleLover } : LoverTab
                 <td>
                   {
                     lover.edited ?
-                    <input
-                      type="number"
-                      className="input input-bordered"
-                      min="1"
-                      max="100"
-                      onBlur={(e) => onChangeLoverRate(index, e.target.value, lover)}
+                    <Range
+                      onChange={(value) => onChangeLoverRate(index, value, lover)}
+                      value={lover.percentage}
                     />
                     :
                     lover.percentage + " %"
