@@ -23,8 +23,8 @@ const router = createBrowserRouter(
      >
        <Route errorElement={<ErrorPage />}>
          <Route index element={<FillYourHeart />} />
-         <Route path="/my-heart" element={<SplitMyHeartCanvas />} />
          <Route path="/rawanita" element={<FillYourHeart />} />
+         <Route path="/my-heart" element={<FillYourHeartResult />} />
        </Route>
      </Route>
    )
