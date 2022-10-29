@@ -39,33 +39,36 @@ function Form() {
   }
 
   function toggleLover(index: number) {
-    console.log(index)
     const newLovers = lovers.map((lover, position) => {
       if(position === index) {
         return { ...lover, edited: !lover.edited };
       }
       return { ...lover, edited: false };
     });
-
-    const allReadOnly = newLovers.filter(lover => lover.edited === false);
-
-    // if valid
-    if( allReadOnly.length === 0 && validatePercentages(newLovers)) {
-      setError("");
-    }
-    else {
-      setError("It's seems your heart is more or less than 100%");
-    }
     setLovers(newLovers);
   }
 
-  function validatePercentages(pendingLovers: LoverInterface[]) : boolean {
+  function validatePercentages(pendingLovers: LoverInterface[]) : number {
     const sumOfLove = pendingLovers.reduce(
       (acc, lover, positionLover) => {
         return acc + lover.percentage;
       }
     , 0);
-    return sumOfLove !== 100;
+    return 100 - sumOfLove;
+  }
+
+  function onSubmit() {
+    const loveDiff = validatePercentages(lovers);
+    if(loveDiff === 0) {
+      setError("");
+      // redirect to
+    }
+    else if(loveDiff > 0) {
+      setError("You still have space in your heart");
+    }
+    else {
+      setError("It's seems your heart is not capable of this amount of love");
+    }
   }
 
 
@@ -73,18 +76,21 @@ function Form() {
     <div className="card w-3/4 bg-neutral text-neutral-content">
       <div className="card-body items-center text-center">
         <h2 className="card-title">what does your heart look like ? 💛</h2>
-        { error ? <ErrorForm message={error} /> : <></> }
-        <div className="indicator w-3/4">
-          <div className="indicator-item indicator-bottom">
-            <button className="btn btn-primary" onClick={() => addLover()}>➕</button>
-          </div>
-          <LoverTable
-            lovers={lovers}
-            deleteLover={deleteLover}
-            changeLover={changeLover}
-            toggleLover={toggleLover}
-          />
+        <div className="w-3/4">
+          { error ? <ErrorForm message={error} /> : <></> }
         </div>
+          <div className="indicator w-3/4">
+            <div className="indicator-item indicator-bottom">
+              <button className="btn btn-primary" onClick={() => addLover()}>➕</button>
+            </div>
+            <LoverTable
+              lovers={lovers}
+              deleteLover={deleteLover}
+              changeLover={changeLover}
+              toggleLover={toggleLover}
+            />
+          </div>
+        <button className="btn btn-lg btn-primary" onClick={onSubmit}>Submit</button>
       </div>
     </div>
   );
