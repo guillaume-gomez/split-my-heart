@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import LoverTable from "./LoverTable";
 import ErrorForm from "./ErrorForm";
+import { uniqBy } from "lodash";
 
 export interface LoverInterface {
   name: string;
   percentage: number;
+  color: string;
   edited: boolean;
 }
 
-const defaultLover : LoverInterface = {name: "Your lover", percentage: 1, edited: false }
+const defaultLover : LoverInterface = {name: "Your lover", percentage: 1, color: "#960A2C", edited: false }
 
 const initialState : LoverInterface[] = [defaultLover];
 
@@ -58,6 +60,13 @@ function Form() {
   }
 
   function onSubmit() {
+    // color uniqueness
+    const colors = uniqBy(lovers, 'color');
+    if(colors.length < colors.length) {
+      setError("Lover's colors are not unique !");
+    }
+
+    // make sure the value are 100%
     const loveDiff = validatePercentages(lovers);
     if(loveDiff === 0) {
       setError("");
@@ -69,17 +78,18 @@ function Form() {
     else {
       setError("It's seems your heart is not capable of this amount of love");
     }
+
+
   }
 
 
   return (
-    <div className="card w-3/4 bg-neutral text-neutral-content">
-      <div className="card-body items-center text-center">
-        <h2 className="card-title">what does your heart look like ? 💛</h2>
-        <div className="w-3/4">
+
+    <div className="flex flex-col gap-2 items-center">
+          <div className="w-11/12">
           { error ? <ErrorForm message={error} /> : <></> }
-        </div>
-          <div className="indicator w-3/4">
+          </div>
+          <div className="indicator w-11/12 /*overflow-x-auto*/">
             <div className="indicator-item indicator-bottom">
               <button className="btn btn-primary" onClick={() => addLover()}>➕</button>
             </div>
@@ -91,7 +101,6 @@ function Form() {
             />
           </div>
         <button className="btn btn-lg btn-primary" onClick={onSubmit}>Submit</button>
-      </div>
     </div>
   );
 }

@@ -20,19 +20,30 @@ function LoverTable({ lovers, deleteLover, changeLover, toggleLover } : LoverTab
     changeLover(index, {...lover, name: value});
   }
 
+  function onChangeLoverColor(index: number, value: string, lover: LoverInterface) {
+    changeLover(index, {...lover, color: value});
+  }
+
   return (
       <table className="table table-zebra w-full">
         <thead className="bg-warning-content">
           <tr className="text-black">
-            <th>Name</th>
-            <th>Love's rate</th>
-            <th>Actions</th>
+            <th className="w-5/12">Name</th>
+            <th className="w-3/12">Love's rate</th>
+            <th className="w-2/12">Love's color</th>
+            <th className="w-2/12">Actions</th>
           </tr>
         </thead>
         <tbody>
         { lovers.map((lover, index) => {
           return (
-              <tr className="text-neutral">
+              <tr className={`text-neutral ${lover.edited ? "bg-secondary" : ""}`}
+                onClick={(event)=> {
+                  if(!lover.edited) {
+                    toggleLover(index)
+                  }
+                }
+              }>
                 <td>
                   {
                     lover.edited ?
@@ -58,12 +69,22 @@ function LoverTable({ lovers, deleteLover, changeLover, toggleLover } : LoverTab
                   }
                 </td>
                 <td>
-                  {
-                    lovers.length > 1 ?
-                      <button onClick={() => toggleLover(index)}>🖊️</button>
-                    : <></>
-                  }
-                  <button onClick={() => deleteLover(index)}>🗑️</button>
+                  <input
+                    type="color"
+                    value={lover.color}
+                    onChange={(event) => onChangeLoverColor(index, event.target.value, lover)}
+                    disabled={!lover.edited}
+                  />
+                </td>
+                <td>
+                  <div className="flex flex-row gap-2">
+                    <button  className="btn btn-circle btn-sm" onClick={() => toggleLover(index)}>🖊️</button>
+                    {
+                      lovers.length > 1 ?
+                        <button className="btn btn-circle btn-sm"  onClick={(event) => {deleteLover(index); event.stopPropagation(); }}>🗑️</button>
+                      : <></>
+                    }
+                  </div>
                 </td>
               </tr>
             );
