@@ -10,13 +10,13 @@ import Header from "../Components/Header";
 
 function ReactRouterRoot() {
   return (
-    <div>
-      <div className="flex flex-col gap-5 items-center">
+      <div className="flex flex-col gap-5 h-screen items-center">
         <Header />
-         <Outlet />
+         <div className="flex-grow flex items-center w-10/12">
+          <Outlet/>
+         </div>
         <Footer />
       </div>
-    </div>
   );
 }
 

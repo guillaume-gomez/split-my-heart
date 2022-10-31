@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import LoverTable from "./LoverTable";
 import ErrorForm from "./ErrorForm";
 import { uniqBy } from "lodash";
+import { useNavigate } from "react-router-dom";
 
 export interface LoverInterface {
   name: string;
@@ -15,6 +16,7 @@ const defaultLover : LoverInterface = {name: "Your lover", percentage: 1, color:
 const initialState : LoverInterface[] = [defaultLover];
 
 function Form() {
+  let navigate = useNavigate();
   const [lovers, setLovers] = useState<LoverInterface[]>(initialState);
   const [error, setError] = useState<string>("");
 
@@ -70,7 +72,7 @@ function Form() {
     const loveDiff = validatePercentages(lovers);
     if(loveDiff === 0) {
       setError("");
-      // redirect to
+      return navigate(`/my-heart?params=${encodeURIComponent(JSON.stringify(lovers))}`);
     }
     else if(loveDiff > 0) {
       setError("You still have space in your heart");
