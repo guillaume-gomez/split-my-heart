@@ -7,7 +7,7 @@ import Legend from "../Components/Legend";
 
 
 function FillYourHeartResult() {
-  let [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const [loversData, setLoversData] = useState<dataStats[]>([]);
   const [displayClipboardMessage, setDisplayClipboardMessage] = useState<boolean>(false);
 

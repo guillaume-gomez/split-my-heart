@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import LoverTable from "./LoverTable";
 import ErrorForm from "./ErrorForm";
 import { uniqBy } from "lodash";
-import { useNavigate } from "react-router-dom";
 
 export interface LoverInterface {
   name: string;
@@ -11,12 +10,15 @@ export interface LoverInterface {
   edited: boolean;
 }
 
+interface FormInterface {
+  onSubmit: (lovers: LoverInterface[]) => void;
+}
+
 const defaultLover : LoverInterface = {name: "Your lover", percentage: 1, color: "#960A2C", edited: false }
 
 const initialState : LoverInterface[] = [defaultLover];
 
-function Form() {
-  let navigate = useNavigate();
+function Form({onSubmit: submitParams} : FormInterface) {
   const [lovers, setLovers] = useState<LoverInterface[]>(initialState);
   const [error, setError] = useState<string>("");
 
@@ -64,7 +66,7 @@ function Form() {
   function onSubmit() {
     // color uniqueness
     const colors = uniqBy(lovers, 'color');
-    if(colors.length < colors.length) {
+    if(colors.length < lovers.length) {
       setError("Lover's colors are not unique !");
     }
 
@@ -72,7 +74,7 @@ function Form() {
     const loveDiff = validatePercentages(lovers);
     if(loveDiff === 0) {
       setError("");
-      return navigate(`/my-heart?params=${encodeURIComponent(JSON.stringify(lovers))}`);
+      submitParams(lovers);
     }
     else if(loveDiff > 0) {
       setError("You still have space in your heart");

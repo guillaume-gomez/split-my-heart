@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { LoverInterface } from "./Form";
 import Range from "./Range";
 
@@ -50,7 +50,8 @@ function LoverTable({ lovers, deleteLover, changeLover, toggleLover } : LoverTab
                     <input
                       type="text"
                       className="input input-bordered"
-                      onBlur={(e) => onChangeLoverName(index, e.target.value, lover)}
+                      value={lover.name}
+                      onChange={(e) => onChangeLoverName(index, e.target.value, lover)}
                     />
                     :
                     lover.name
