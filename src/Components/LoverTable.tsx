@@ -28,10 +28,10 @@ function LoverTable({ lovers, deleteLover, changeLover, toggleLover } : LoverTab
       <table className="table table-zebra w-full">
         <thead className="bg-warning-content">
           <tr className="text-black">
-            <th className="w-5/12">Name</th>
-            <th className="w-3/12">Love's rate</th>
-            <th className="w-2/12">Love's color</th>
-            <th className="w-2/12">Actions</th>
+            <th className="lg:w-5/12 w-4/12">Name</th>
+            <th className="lg:w-3/12 w-4/12">Love's rate</th>
+            <th className="lg:w-2/12 w-4/12">Love's color</th>
+            <th className="lg:w-2/12 w-4/12">Actions</th>
           </tr>
         </thead>
         <tbody>

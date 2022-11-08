@@ -19,7 +19,7 @@ function Header() {
     </div>
   </div>
   <div className="navbar-center">
-    <Link to={"/"} className="btn btn-ghost normal-case text-xl">Lovers</Link>
+    <Link to={"/"} className="btn btn-ghost normal-case text-xl">Split my heart</Link>
   </div>
   <div className="navbar-end">
   </div>

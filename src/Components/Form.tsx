@@ -97,12 +97,14 @@ function Form({onSubmit: submitParams} : FormInterface) {
             <div className="indicator-item indicator-bottom">
               <button className="btn btn-primary" onClick={() => addLover()}>➕</button>
             </div>
-            <LoverTable
-              lovers={lovers}
-              deleteLover={deleteLover}
-              changeLover={changeLover}
-              toggleLover={toggleLover}
-            />
+            <div className="overflow-x-auto">
+              <LoverTable
+                lovers={lovers}
+                deleteLover={deleteLover}
+                changeLover={changeLover}
+                toggleLover={toggleLover}
+              />
+            </div>
           </div>
         <button className="btn btn-lg btn-primary" onClick={onSubmit}>Submit</button>
     </div>

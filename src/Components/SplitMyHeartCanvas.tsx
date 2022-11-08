@@ -14,8 +14,8 @@ interface SplitMyHeartCanvasInterface {
 
 function SplitMyHeartCanvas({ loversData } : SplitMyHeartCanvasInterface) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
-    //useOnWindowResize(() => console.log("window resized"));
 
+    useOnWindowResize(() => renderPieChart());
     useEffect(() => {
         renderPieChart();
     }, [loversData]);
@@ -24,8 +24,14 @@ function SplitMyHeartCanvas({ loversData } : SplitMyHeartCanvasInterface) {
         if(!canvasRef.current) {
             return;
         }
-        canvasRef.current.width = 650;
-        canvasRef.current.height = 650;
+        const offset = 100;
+        const canvasSize = Math.min(
+            canvasRef.current.parentElement!.clientHeight - offset,
+            1000
+        );
+        console.log(canvasSize)
+        canvasRef.current.width = canvasSize
+        canvasRef.current.height = canvasSize;
 
         const context = canvasRef.current.getContext("2d");
         if(!context) {

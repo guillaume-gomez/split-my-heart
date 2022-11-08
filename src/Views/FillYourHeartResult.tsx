@@ -38,7 +38,7 @@ function FillYourHeartResult() {
 
   return (
     <div className="w-full flex flex-col items-center gap-7">
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-3 w-full">
         <SplitMyHeartCanvas loversData={loversData}/>
         <Legend loversData={loversData}/>
       </div>
