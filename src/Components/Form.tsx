@@ -93,11 +93,11 @@ function Form({onSubmit: submitParams} : FormInterface) {
           <div className="w-11/12">
           { error ? <ErrorForm message={error} /> : <></> }
           </div>
-          <div className="indicator w-11/12 /*overflow-x-auto*/">
+          <div className="indicator w-11/12">
             <div className="indicator-item indicator-bottom">
               <button className="btn btn-primary" onClick={() => addLover()}>➕</button>
             </div>
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto w-full">
               <LoverTable
                 lovers={lovers}
                 deleteLover={deleteLover}
