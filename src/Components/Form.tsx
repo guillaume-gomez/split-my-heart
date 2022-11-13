@@ -93,7 +93,7 @@ function Form({onSubmit: submitParams} : FormInterface) {
           <div className="w-11/12">
           { error ? <ErrorForm message={error} /> : <></> }
           </div>
-          <div className="form-control w-full max-w-xs">
+          <div className="form-control max-w-xs">
             <label className="label">
               <span className="label-text text-neutral-content">What is your name?</span>
             </label>

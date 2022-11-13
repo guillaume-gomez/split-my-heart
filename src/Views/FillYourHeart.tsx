@@ -14,7 +14,6 @@ function FillYourHeart() {
 
   function submit(name: string, lovers: LoverInterface[]){
     let compressedLovers : LoverApiInterface[]  = [];
-    debugger
     if(location.pathname === "/rawanita") {
       compressedLovers = [{name: "Guillaume", percentage: 100, color: "#16623C" }];
     } else {
