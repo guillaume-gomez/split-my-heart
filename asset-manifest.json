@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/split-my-heart/static/css/main.cb8090aa.css",
-    "main.js": "/split-my-heart/static/js/main.7ca82885.js",
+    "main.js": "/split-my-heart/static/js/main.eecb2134.js",
     "static/js/787.cb5af14e.chunk.js": "/split-my-heart/static/js/787.cb5af14e.chunk.js",
     "index.html": "/split-my-heart/index.html",
     "main.cb8090aa.css.map": "/split-my-heart/static/css/main.cb8090aa.css.map",
-    "main.7ca82885.js.map": "/split-my-heart/static/js/main.7ca82885.js.map",
+    "main.eecb2134.js.map": "/split-my-heart/static/js/main.eecb2134.js.map",
     "787.cb5af14e.chunk.js.map": "/split-my-heart/static/js/787.cb5af14e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.cb8090aa.css",
-    "static/js/main.7ca82885.js"
+    "static/js/main.eecb2134.js"
   ]
 }
