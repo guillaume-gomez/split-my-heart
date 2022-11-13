@@ -8,7 +8,6 @@ function ErrorForm({ message } : ErrorFormInterface) {
   return (
     <div className="alert alert-error shadow-lg">
       <div>
-        🥺
         <span>{message}</span>
       </div>
     </div>

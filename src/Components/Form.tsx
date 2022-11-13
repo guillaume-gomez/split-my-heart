@@ -11,7 +11,7 @@ export interface LoverInterface {
 }
 
 interface FormInterface {
-  onSubmit: (lovers: LoverInterface[]) => void;
+  onSubmit: (name: string, lovers: LoverInterface[]) => void;
 }
 
 const defaultLover : LoverInterface = {name: "Your lover", percentage: 1, color: "#960A2C", edited: false }
@@ -63,28 +63,30 @@ function Form({onSubmit: submitParams} : FormInterface) {
   function onSubmit() {
     // color uniqueness
     const colors = uniqBy(lovers, 'color');
+
     if(colors.length < lovers.length) {
-      setError("Lover's colors are not unique !");
+      setError("Lover's colors are not unique ! 😛");
+      return;
+    }
+
+    if(name.length === 0) {
+      setError("Please fill your name ☺️");
+      return;
     }
 
     // make sure the value are 100%
     const loveDiff = validatePercentages(lovers);
     if(loveDiff === 0) {
       setError("");
-      submitParams(lovers);
+      //submitParams(name, lovers);
     }
     else if(loveDiff > 0) {
-      setError("You still have space in your heart");
+      setError("You still have space in your heart 🤗");
     }
     else {
-      setError("It's seems your heart is not capable of this amount of love");
+      setError("It's seems your heart is not capable of this amount of love 🤭");
     }
-
-
   }
-
-  console.log(name)
-
 
   return (
     <div className="flex flex-col gap-4 items-center">
