@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import LoverTable from "./LoverTable";
 import ErrorForm from "./ErrorForm";
-import { uniqBy } from "lodash";
+import { uniqBy, sumBy } from "lodash";
 
 export interface LoverInterface {
   name: string;
@@ -20,6 +20,7 @@ const initialState : LoverInterface[] = [defaultLover];
 
 function Form({onSubmit: submitParams} : FormInterface) {
   const [lovers, setLovers] = useState<LoverInterface[]>(initialState);
+  const [name, setName] = useState<string>("");
   const [error, setError] = useState<string>("");
 
   function deleteLover(index: number) {
@@ -55,11 +56,7 @@ function Form({onSubmit: submitParams} : FormInterface) {
   }
 
   function validatePercentages(pendingLovers: LoverInterface[]) : number {
-    const sumOfLove = pendingLovers.reduce(
-      (acc, lover, positionLover) => {
-        return acc + lover.percentage;
-      }
-    , 0);
+    const sumOfLove = sumBy(pendingLovers, 'percentage');
     return 100 - sumOfLove;
   }
 
@@ -86,17 +83,31 @@ function Form({onSubmit: submitParams} : FormInterface) {
 
   }
 
+  console.log(name)
+
 
   return (
-
-    <div className="flex flex-col gap-2 items-center">
+    <div className="flex flex-col gap-4 items-center">
           <div className="w-11/12">
           { error ? <ErrorForm message={error} /> : <></> }
+          </div>
+          <div className="form-control w-full max-w-xs">
+            <label className="label">
+              <span className="label-text text-neutral-content">What is your name?</span>
+            </label>
+            <input
+              type="text"
+              placeholder="Your name"
+              className="input input-bordered text-neutral"
+              value={name}
+              onChange={event => setName(event.target.value)}
+            />
           </div>
           <div className="indicator w-11/12">
             <div className="indicator-item indicator-bottom">
               <button className="btn btn-primary" onClick={() => addLover()}>➕</button>
             </div>
+
             <div className="overflow-x-auto w-full">
               <LoverTable
                 lovers={lovers}
