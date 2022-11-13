@@ -1,6 +1,7 @@
 import React from 'react';
 import { LoverInterface } from "./Form";
 import Range from "./Range";
+import { sumBy } from "lodash";
 
 interface LoverTableInterface {
   lovers: LoverInterface[];
@@ -24,6 +25,19 @@ function LoverTable({ lovers, deleteLover, changeLover, toggleLover } : LoverTab
     changeLover(index, {...lover, color: value});
   }
 
+  function displaySumPercentage()  {
+    const sumOfLove = sumBy(lovers, 'percentage');
+    let fontColor = "";
+    if(sumOfLove > 100) {
+      fontColor = "text-error";
+    } else if (sumOfLove < 100) {
+      fontColor = "text-warning";
+    } else {
+      fontColor = "text-black";
+    }
+    return <span className={fontColor}>{`${sumOfLove} %`}</span>
+  }
+
   return (
       <table className="table table-zebra w-full">
         <thead className="bg-warning-content">
@@ -38,6 +52,7 @@ function LoverTable({ lovers, deleteLover, changeLover, toggleLover } : LoverTab
         { lovers.map((lover, index) => {
           return (
               <tr className={`text-neutral ${lover.edited ? "bg-secondary" : ""}`}
+                key={`${lover.name}-${index}`}
                 onClick={(event)=> {
                   if(!lover.edited) {
                     toggleLover(index)
@@ -92,6 +107,14 @@ function LoverTable({ lovers, deleteLover, changeLover, toggleLover } : LoverTab
           })
         }
         </tbody>
+        <tfoot>
+          <tr>
+            <th className="lg:w-5/12 w-4/12"></th>
+            <th className="lg:w-3/12 w-4/12 text-lg">{displaySumPercentage()}</th>
+            <th className="lg:w-2/12 w-4/12"></th>
+            <th className="lg:w-2/12 w-4/12"></th>
+          </tr>
+        </tfoot>
       </table>
   );
 }
