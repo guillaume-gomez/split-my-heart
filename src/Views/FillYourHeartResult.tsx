@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSearchParams, Link } from "react-router-dom";
 import SplitMyHeartCanvas, { dataStats } from "../Components/SplitMyHeartCanvas";
 import { LoverInterface } from "../Components/Form";
+import { LoverApiInterface } from "./FillYourHeart";
 import Legend from "../Components/Legend";
 
 
@@ -28,9 +29,9 @@ function FillYourHeartResult() {
   }, [searchParams]);
 
   function parseParam(stringifiedParam :string) :dataStats[] {
-    const lovers : LoverInterface[] = JSON.parse(stringifiedParam);
+    const lovers : LoverApiInterface[] = JSON.parse(stringifiedParam);
     return lovers.map(lover => {
-      return {name: lover.name, percentage: lover.percentage, color: lover.color };
+      return {name: lover.n, percentage: lover.p, color: lover.c };
     });
   }
 

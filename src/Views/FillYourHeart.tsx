@@ -3,9 +3,9 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Form, { LoverInterface } from "../Components/Form";
 
 export interface LoverApiInterface {
-  name: string;
-  percentage: number;
-  color: string;
+  n: string;
+  p: number;
+  c: string;
 }
 
 function FillYourHeart() {
@@ -15,11 +15,10 @@ function FillYourHeart() {
   function submit(name: string, lovers: LoverInterface[]){
     let compressedLovers : LoverApiInterface[]  = [];
     if(location.pathname === "/rawanita") {
-      compressedLovers = [{name: "Guillaume", percentage: 100, color: "#16623C" }];
+      compressedLovers = [{n: "Guillaume", p: 100, c: "#16623C" }];
     } else {
-      compressedLovers = lovers.map(lover => ({ name: lover.name, percentage: lover.percentage, color: lover.color }));
+      compressedLovers = lovers.map(lover => ({ n: lover.name, p: lover.percentage, c: lover.color }));
     }
-
     return navigate(`/my-heart?name=${name}&params=${encodeURIComponent(JSON.stringify(compressedLovers))}`);
   }
 

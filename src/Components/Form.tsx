@@ -14,11 +14,12 @@ interface FormInterface {
   onSubmit: (name: string, lovers: LoverInterface[]) => void;
 }
 
+
 const defaultLover : LoverInterface = {name: "Your lover", percentage: 1, color: "#960A2C", edited: false }
 
 const initialState : LoverInterface[] = [defaultLover];
 
-function Form({onSubmit: submitParams} : FormInterface) {
+function Form({ onSubmit: submitParams} : FormInterface) {
   const [lovers, setLovers] = useState<LoverInterface[]>(initialState);
   const [name, setName] = useState<string>("");
   const [error, setError] = useState<string>("");
