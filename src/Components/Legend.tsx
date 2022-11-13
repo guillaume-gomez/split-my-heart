@@ -10,8 +10,9 @@ function Legend({loversData} : LegendInterface) {
   return (
     <div className="card bg-base-300 flex md:flex-row flex-col gap-5 justify-items-center items-center border">
       {
-        loversData.map(loverData =>
+        loversData.map((loverData, index) =>
           <LegendPart
+            key={`${loverData.name}-${index}`}
             label={`${loverData.name}  ${loverData.percentage}%`}
             color={loverData.color}
           />
