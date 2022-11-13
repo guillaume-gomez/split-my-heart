@@ -26,9 +26,11 @@ function SplitMyHeartCanvas({ loversData } : SplitMyHeartCanvasInterface) {
         }
         const offset = 100;
         const canvasSize = Math.min(
-            window.innerHeight - offset,
-            10000000
-        );
+            canvasRef.current.parentElement!.clientWidth
+            - offset,
+            window.innerWidth * 0.5
+            )
+
         canvasRef.current.width = canvasSize
         canvasRef.current.height = canvasSize;
 
@@ -70,7 +72,7 @@ function SplitMyHeartCanvas({ loversData } : SplitMyHeartCanvasInterface) {
 
 
      // set global composite - destination-atop
-     context.globalCompositeOperation = 'destination-atop';
+     //context.globalCompositeOperation = 'destination-atop';
 
         for (let lover of loversData) {
             //calculating the angle the slice (portion) will take in the chart
