@@ -52,7 +52,7 @@ function LoverTable({ lovers, deleteLover, changeLover, toggleLover } : LoverTab
         { lovers.map((lover, index) => {
           return (
               <tr className={`text-neutral ${lover.edited ? "bg-secondary" : ""}`}
-                key={`${lover.name}-${index}`}
+                key={index}
                 onClick={(event)=> {
                   if(!lover.edited) {
                     toggleLover(index)
