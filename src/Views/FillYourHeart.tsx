@@ -12,7 +12,7 @@ function FillYourHeart() {
   let navigate = useNavigate();
   const location = useLocation();
 
-  function submit(lovers: LoverInterface[]){
+  function submit(name: string, lovers: LoverInterface[]){
     let compressedLovers : LoverApiInterface[]  = [];
     debugger
     if(location.pathname === "/rawanita") {
@@ -21,7 +21,7 @@ function FillYourHeart() {
       compressedLovers = lovers.map(lover => ({ name: lover.name, percentage: lover.percentage, color: lover.color }));
     }
 
-    return navigate(`/my-heart?params=${encodeURIComponent(JSON.stringify(compressedLovers))}`);
+    return navigate(`/my-heart?name=${name}&params=${encodeURIComponent(JSON.stringify(compressedLovers))}`);
   }
 
   return (

@@ -28,7 +28,7 @@ function SplitMyHeartCanvas({ loversData } : SplitMyHeartCanvasInterface) {
         const canvasSize = Math.min(
             canvasRef.current.parentElement!.clientWidth
             - offset,
-            window.innerWidth * 0.5
+            100000
             )
 
         canvasRef.current.width = canvasSize

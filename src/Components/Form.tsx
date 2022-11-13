@@ -78,7 +78,7 @@ function Form({onSubmit: submitParams} : FormInterface) {
     const loveDiff = validatePercentages(lovers);
     if(loveDiff === 0) {
       setError("");
-      //submitParams(name, lovers);
+      submitParams(name, lovers);
     }
     else if(loveDiff > 0) {
       setError("You still have space in your heart 🤗");
