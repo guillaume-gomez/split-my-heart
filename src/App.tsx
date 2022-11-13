@@ -18,7 +18,7 @@ import {
 const router = createBrowserRouter(
    createRoutesFromElements(
      <Route
-        path="/"
+        path=""
         element={<ReactRouterRoot />}
      >
        <Route errorElement={<ErrorPage />}>
