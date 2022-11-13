@@ -7,7 +7,7 @@ import FillYourHeart from "./Views/FillYourHeart";
 import FillYourHeartResult from "./Views/FillYourHeartResult";
 
 import {
-  createBrowserRouter,
+  createHashRouter,
   RouterProvider,
   createRoutesFromElements,
   Route
@@ -15,7 +15,7 @@ import {
 
 
 
-const router = createBrowserRouter(
+const router = createHashRouter(
    createRoutesFromElements(
      <Route
         path=""
