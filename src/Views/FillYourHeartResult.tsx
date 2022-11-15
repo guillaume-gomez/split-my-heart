@@ -47,7 +47,7 @@ function FillYourHeartResult() {
       <div className="flex flex-col gap-3 justify-center">
         <div className="card bg-base-300">
           <div className="card-body">
-            <h2>What's the
+            <h2>How
               <span className="font-bold px-1">{name}'s</span>
                heart looks like ? 💜
             </h2>
