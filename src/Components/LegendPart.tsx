@@ -7,7 +7,7 @@ interface LegendPartInterface {
 
 function LegendPart({label, color} : LegendPartInterface) {
   return (
-    <div className="card-body flex flex-row items-center justify-items-center gap-2">
+    <div className="flex flex-row items-center justify-items-center gap-2">
         <div className="badge" style={{width: 10, background: color}}></div>
         <span>{label}</span>
     </div>
