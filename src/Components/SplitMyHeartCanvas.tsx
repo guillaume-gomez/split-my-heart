@@ -25,11 +25,9 @@ function SplitMyHeartCanvas({ loversData } : SplitMyHeartCanvasInterface) {
             return;
         }
         const offset = 100;
-        const canvasSize = Math.min(
+        const canvasSize =
             canvasRef.current.parentElement!.clientWidth
-            - offset,
-            100000
-            )
+            - offset;
 
         canvasRef.current.width = canvasSize
         canvasRef.current.height = canvasSize;
@@ -39,6 +37,33 @@ function SplitMyHeartCanvas({ loversData } : SplitMyHeartCanvasInterface) {
             return;
         }
 
+         drawHeart(context, canvasSize);
+         // set global composite - destination-atop
+         context.globalCompositeOperation = 'source-atop';
+         drawPieChart(context, canvasSize);
+        
+    }
+
+    function drawPieChart(context: CanvasRenderingContext2D, canvasSize: number) {
+        const middle = canvasSize/2;
+        const radius = canvasSize;
+        const total = loversData.reduce((sum, {percentage}) => sum + percentage, 0);
+        let currentAngle = 0;
+        for (let lover of loversData) {
+            //calculating the angle the slice (portion) will take in the chart
+            let portionAngle = (lover.percentage / total) * 2 * Math.PI;
+            //drawing an arc and a line to the center to differentiate the slice from the rest
+            context.beginPath();
+            context.arc(middle, middle, radius, currentAngle, currentAngle + portionAngle);
+            currentAngle += portionAngle;
+            context.lineTo(middle, middle);
+            //filling the slices with the corresponding mood's color
+            context.fillStyle = lover.color;
+            context.fill();
+        }
+    }
+
+    function drawHeart(context: CanvasRenderingContext2D, canvasSize: number) {
         const offsetHeart = 20
         const width = canvasSize - offsetHeart;
         const height = canvasSize - offsetHeart;
@@ -63,28 +88,6 @@ function SplitMyHeartCanvas({ loversData } : SplitMyHeartCanvasInterface) {
         context.quadraticCurveTo(heartOffset, heartOffset + heartSize / 2, heartOffset, heartOffset + heartSize / 4);
         context.stroke();
         context.fill();
-
-
-         // set global composite - destination-atop
-         context.globalCompositeOperation = 'source-atop';
-
-
-        const middle = canvasSize/2;
-        const radius = canvasSize;
-        const total = loversData.reduce((sum, {percentage}) => sum + percentage, 0);
-        let currentAngle = 0;
-        for (let lover of loversData) {
-            //calculating the angle the slice (portion) will take in the chart
-            let portionAngle = (lover.percentage / total) * 2 * Math.PI;
-            //drawing an arc and a line to the center to differentiate the slice from the rest
-            context.beginPath();
-            context.arc(middle, middle, radius, currentAngle, currentAngle + portionAngle);
-            currentAngle += portionAngle;
-            context.lineTo(middle, middle);
-            //filling the slices with the corresponding mood's color
-            context.fillStyle = lover.color;
-            context.fill();
-        }
     }
 
     return (
