@@ -6,7 +6,6 @@ import { LoverApiInterface } from "./FillYourHeart";
 import Legend from "../Components/Legend";
 
 
-
 function FillYourHeartResult() {
   const [searchParams] = useSearchParams();
   const [loversData, setLoversData] = useState<dataStats[]>([]);
@@ -44,14 +43,12 @@ function FillYourHeartResult() {
 
   return (
     <div className="w-full flex flex-col items-center gap-7">
-      <div className="flex flex-col gap-3 justify-center">
-        <div className="card bg-base-300">
-          <div className="card-body">
-            <h2>How
-              <span className="font-bold px-1">{name}'s</span>
-               heart looks like ? 💜
-            </h2>
-          </div>
+      <div className="flex flex-col gap-3">
+        <div className="card bg-base-300 p-2">
+          <h2>How
+            <span className="font-bold px-1">{name}'s</span>
+             heart looks like ? 💜
+          </h2>
         </div>
         <SplitMyHeartCanvas loversData={loversData}/>
         <Legend loversData={loversData}/>
