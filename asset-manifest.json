@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/split-my-heart/static/css/main.cb8090aa.css",
-    "main.js": "/split-my-heart/static/js/main.c5ee2a7c.js",
+    "main.css": "/split-my-heart/static/css/main.bf38ff49.css",
+    "main.js": "/split-my-heart/static/js/main.80d19fb3.js",
     "static/js/787.cb5af14e.chunk.js": "/split-my-heart/static/js/787.cb5af14e.chunk.js",
     "index.html": "/split-my-heart/index.html",
-    "main.cb8090aa.css.map": "/split-my-heart/static/css/main.cb8090aa.css.map",
-    "main.c5ee2a7c.js.map": "/split-my-heart/static/js/main.c5ee2a7c.js.map",
+    "main.bf38ff49.css.map": "/split-my-heart/static/css/main.bf38ff49.css.map",
+    "main.80d19fb3.js.map": "/split-my-heart/static/js/main.80d19fb3.js.map",
     "787.cb5af14e.chunk.js.map": "/split-my-heart/static/js/787.cb5af14e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.cb8090aa.css",
-    "static/js/main.c5ee2a7c.js"
+    "static/css/main.bf38ff49.css",
+    "static/js/main.80d19fb3.js"
   ]
 }
