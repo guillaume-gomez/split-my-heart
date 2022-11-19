@@ -3,6 +3,7 @@ import { LoverInterface } from "./Form";
 import Range from "./Range";
 import { sumBy } from "lodash";
 
+
 interface LoverTableInterface {
   lovers: LoverInterface[];
   deleteLover: (index: number) => void;
@@ -76,10 +77,22 @@ function LoverTable({ lovers, deleteLover, changeLover, toggleLover } : LoverTab
                 <td>
                   {
                     lover.edited ?
-                    <Range
-                      onChange={(value) => onChangeLoverRate(index, value, lover)}
-                      value={lover.percentage}
-                    />
+                    <div>
+                      <div className="sm:block hidden">
+                        <Range
+                          onChange={(value) => onChangeLoverRate(index, value, lover)}
+                          value={lover.percentage}
+                        />
+                      </div>
+                      <div className="sm:hidden block">
+                        <input
+                          type="number"
+                          className="input input-bordered"
+                          value={lover.percentage}
+                          onChange={(event) => onChangeLoverRate(index, parseInt(event.target.value, 10), lover)}
+                        />
+                      </div>
+                    </div>
                     :
                     lover.percentage + " %"
                   }
