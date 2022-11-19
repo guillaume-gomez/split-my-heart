@@ -42,10 +42,10 @@ function LoverTable({ lovers, deleteLover, changeLover, toggleLover } : LoverTab
       <table className="table table-zebra w-full">
         <thead className="bg-warning-content">
           <tr className="text-black">
-            <th className="lg:w-5/12 w-4/12">Name</th>
-            <th className="lg:w-3/12 w-4/12">Love's rate</th>
-            <th className="lg:w-2/12 w-4/12">Love's color</th>
-            <th className="lg:w-2/12 w-4/12">Actions</th>
+            <th className="lg:w-5/12 w-6/12">Name</th>
+            <th className="lg:w-3/12 w-5/12">Love's rate</th>
+            <th className="lg:w-3/12 w-5/12">Love's color</th>
+            <th className="lg:w-1/12 w-1/12">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -94,7 +94,6 @@ function LoverTable({ lovers, deleteLover, changeLover, toggleLover } : LoverTab
                 </td>
                 <td>
                   <div className="flex flex-row gap-2">
-                    <button  className="btn btn-circle btn-sm" onClick={() => toggleLover(index)}>🖊️</button>
                     {
                       lovers.length > 1 ?
                         <button className="btn btn-circle btn-sm"  onClick={(event) => {deleteLover(index); event.stopPropagation(); }}>🗑️</button>
