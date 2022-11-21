@@ -1,6 +1,6 @@
 import React from 'react';
 import { LoverInterface } from "./Form";
-import Range from "./Range";
+import ResponsiveRange from "./ResponsiveRange";
 import { sumBy } from "lodash";
 
 
@@ -65,7 +65,7 @@ function LoverTable({ lovers, deleteLover, changeLover, toggleLover } : LoverTab
                     lover.edited ?
                     <input
                       type="text"
-                      className="input input-bordered"
+                      className="input sm:input-md input-sm input-bordered"
                       value={lover.name}
                       onChange={(e) => onChangeLoverName(index, e.target.value, lover)}
                     />
@@ -77,22 +77,10 @@ function LoverTable({ lovers, deleteLover, changeLover, toggleLover } : LoverTab
                 <td>
                   {
                     lover.edited ?
-                    <div>
-                      <div className="sm:block hidden">
-                        <Range
-                          onChange={(value) => onChangeLoverRate(index, value, lover)}
-                          value={lover.percentage}
-                        />
-                      </div>
-                      <div className="sm:hidden block">
-                        <input
-                          type="number"
-                          className="input input-bordered"
-                          value={lover.percentage}
-                          onChange={(event) => onChangeLoverRate(index, parseInt(event.target.value, 10), lover)}
-                        />
-                      </div>
-                    </div>
+                    <ResponsiveRange
+                      onChange={(value) => onChangeLoverRate(index, value, lover)}
+                      value={lover.percentage}
+                    />
                     :
                     lover.percentage + " %"
                   }
