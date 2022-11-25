@@ -24,13 +24,15 @@ function SplitMyHeartCanvas({ loversData } : SplitMyHeartCanvasInterface) {
         if(!canvasRef.current) {
             return;
         }
-        const offset = 100;
+        const offset = 0;
         const canvasSize =
-            canvasRef.current.parentElement!.clientWidth
+            (window.innerHeight * 0.5)
             - offset;
 
         canvasRef.current.width = canvasSize
         canvasRef.current.height = canvasSize;
+
+        console.log(canvasSize)
 
         const context = canvasRef.current.getContext("2d");
         if(!context) {
@@ -91,7 +93,7 @@ function SplitMyHeartCanvas({ loversData } : SplitMyHeartCanvasInterface) {
     }
 
     return (
-        <div className="card bg-base-300">
+        <div className="card bg-base-300" style={{height: "50vh"}}>
             <canvas ref={canvasRef} />
         </div>
     );
