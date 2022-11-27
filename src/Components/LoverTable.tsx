@@ -1,6 +1,7 @@
 import React from 'react';
 import { LoverInterface } from "./Form";
 import ResponsiveRange from "./ResponsiveRange";
+import ColorPicker from "./ColorPicker"
 import { sumBy } from "lodash";
 
 
@@ -88,6 +89,7 @@ function LoverTable({ lovers, deleteLover, changeLover, toggleLover } : LoverTab
                   }
                 </td>
                 <td>
+                  <ColorPicker onChange={() => console.log("jkljkl")}/>
                   <input
                     type="color"
                     value={lover.color}
