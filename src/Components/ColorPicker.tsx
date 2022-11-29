@@ -33,7 +33,6 @@ function ColorPicker({onChange} : ColorPickerInterface) {
     <div>
       <div>
         <div className="flex flex-row relative">
-          <input id="color-picker" disabled className="w-full border border-gray-400 p-2 rounded-lg text-neutral" value={currentColorClass} />
           <div onClick={()=> setIsOpen(!isOpen)} className={`cursor-pointer rounded-full ml-3 my-auto h-10 w-10 flex bg-${currentColorClass}`}>
             <svg xmlns="http://www.w3.org/2000/svg"className={`${iconColorClass} h-6 w-6 mx-auto my-auto`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
