@@ -47,11 +47,16 @@ function ColorPicker({onChange} : ColorPickerInterface) {
                   {
                     COLORS.map(color => 
                       (
-                        <div>
+                        <div key={`${color}`}>
                         {
                           VARIANTS.map(variant => {
                               const colorClass = `bg-${color}-${variant}`
-                              return <div onClick={()=> selectColor(color, variant)} className={`cursor-pointer w-6 h-6 rounded-full mx-1 my-1 ${colorClass}`}></div>
+                              return (
+                                <div
+                                  onClick={()=> selectColor(color, variant)}
+                                  key={colorClass}
+                                  className={`cursor-pointer w-6 h-6 rounded-full mx-1 my-1 ${colorClass}`}>
+                                </div>)
                             }
                           )
                         }
