@@ -54,7 +54,7 @@ function LoverTable({ lovers, deleteLover, changeLover, toggleLover } : LoverTab
         <tbody>
         { lovers.map((lover, index) => {
           return (
-              <tr className={`text-neutral ${lover.edited ? "bg-secondary" : ""}`}
+              <tr className={`text-accent ${lover.edited ? "bg-secondary" : ""}`}
                 key={index}
                 onClick={(event)=> {
                   if(!lover.edited) {
@@ -89,7 +89,7 @@ function LoverTable({ lovers, deleteLover, changeLover, toggleLover } : LoverTab
                   }
                 </td>
                 <td>
-                  <ColorPicker onChange={() => console.log("jkljkl")}/>
+                  <ColorPicker onChange={(value) => console.log(value)}/>
                   <input
                     type="color"
                     value={lover.color}

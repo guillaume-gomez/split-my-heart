@@ -101,7 +101,7 @@ function Form({ onSubmit: submitParams} : FormInterface) {
             <input
               type="text"
               placeholder="Your name"
-              className="input input-bordered text-neutral"
+              className="input input-bordered text-accent placeholder-pink-900"
               value={name}
               onChange={event => setName(event.target.value)}
             />
