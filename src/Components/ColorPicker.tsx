@@ -1,9 +1,11 @@
 // Code from Tile And Square https://github.com/guillaume-gomez/tile-and-square
 import React, { useState } from 'react';
 import ClickAwayListener from 'react-click-away-listener';
+import { fromTailwindColorClassesToHex } from "../tailwindTools";
 
 const COLORS = ['gray', 'red','yellow', 'green', 'blue', 'indigo', 'purple', 'pink'];
 const VARIANTS = [100, 200, 300, 400, 500, 600, 700, 800, 900];
+
 
 interface ColorPickerInterface {
   onChange: (value: string) => void;
@@ -16,7 +18,7 @@ function ColorPicker({onChange} : ColorPickerInterface) {
 
   function selectColor(color: string, variant: number) {
     setCurrentColorClass(color + '-' + variant);
-    onChange(color + '-' + variant);
+    onChange(fromTailwindColorClassesToHex(color, variant));
     if (variant < 500) {
       setIconColorClass("text-black");
     }
@@ -41,7 +43,10 @@ function ColorPicker({onChange} : ColorPickerInterface) {
           </div>
           {isOpen ?
             <ClickAwayListener onClickAway={handleClickAway}>
-            <div className="overflow-y-scroll h-36 border-2 border-gray-300 origin-top-right absolute right-0 top-full mt-2 rounded-md shadow-lg">
+            <div
+              className="overflow-y-scroll h-36 border-2 border-gray-300 origin-top-right absolute right-0 top-full mt-2 rounded-md shadow-lg"
+              style={{zIndex: 2}}
+            >
               <div className="rounded-md bg-base-200 shadow-xs p-2">
                 <div className="flex">
                   {
