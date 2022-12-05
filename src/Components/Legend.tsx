@@ -8,7 +8,7 @@ interface LegendInterface {
 
 function Legend({loversData} : LegendInterface) {
   return (
-    <div className="card bg-base-300 flex flex-col gap-5 items-center border p-2">
+    <div className="card bg-base-300 flex flex-col gap-5 items-center p-2">
       {
         loversData.map((loverData, index) =>
           <LegendPart
