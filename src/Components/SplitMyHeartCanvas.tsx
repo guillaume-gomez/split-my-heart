@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { useOnWindowResize } from "rooks";
 
 export interface dataStats {
@@ -14,41 +14,40 @@ interface SplitMyHeartCanvasInterface {
 
 function SplitMyHeartCanvas({ loversData } : SplitMyHeartCanvasInterface) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
+    const [realiticView, setRealiticView] = useState<boolean>(false);
 
     useOnWindowResize(() => renderPieChart());
     useEffect(() => {
         renderPieChart();
-    }, [loversData]);
+    }, [loversData, realiticView]);
 
     function renderPieChart() {
         if(!canvasRef.current) {
             return;
         }
-        const offset = 0;
-        const canvasSize =
-            (window.innerHeight * 0.5)
-            - offset;
-
+        const canvasSize = (window.innerHeight * 0.5)
         canvasRef.current.width = canvasSize
         canvasRef.current.height = canvasSize;
-
-        console.log(canvasSize)
 
         const context = canvasRef.current.getContext("2d");
         if(!context) {
             return;
         }
 
-         drawHeart(context, canvasSize);
-         // set global composite - destination-atop
-         context.globalCompositeOperation = 'source-atop';
-         drawPieChart(context, canvasSize);
+        if(realiticView) {
+            drawPieChart(context, canvasSize, 250);
+        } else {
+            drawHeart(context, canvasSize);
+            // set global composite - destination-atop
+            context.globalCompositeOperation = 'source-atop';
+            drawPieChart(context, canvasSize, 0);
+        }
         
     }
 
-    function drawPieChart(context: CanvasRenderingContext2D, canvasSize: number) {
+    function drawPieChart(context: CanvasRenderingContext2D, canvasSize: number, offset: number) {
         const middle = canvasSize/2;
-        const radius = canvasSize;
+        const radius = canvasSize - offset;
         const total = loversData.reduce((sum, {percentage}) => sum + percentage, 0);
         let currentAngle = 0;
         for (let lover of loversData) {
@@ -95,6 +94,12 @@ function SplitMyHeartCanvas({ loversData } : SplitMyHeartCanvasInterface) {
     return (
         <div className="card bg-base-300" style={{height: "50vh"}}>
             <canvas ref={canvasRef} />
+            <div className="form-control absolute bottom-2 right-2">
+                <label className="cursor-pointer label relative">
+                  <span className="label-text">Realistic view</span>
+                  <input type="checkbox" className="toggle toggle-primary" checked={realiticView} onChange={() => setRealiticView(!realiticView)} />
+                </label>
+            </div>
         </div>
     );
 }
