@@ -89,13 +89,7 @@ function LoverTable({ lovers, deleteLover, changeLover, toggleLover } : LoverTab
                   }
                 </td>
                 <td>
-                  <ColorPicker onChange={(value) => console.log(value)}/>
-                  <input
-                    type="color"
-                    value={lover.color}
-                    onChange={(event) => onChangeLoverColor(index, event.target.value, lover)}
-                    disabled={!lover.edited}
-                  />
+                  <ColorPicker onChange={(value) => onChangeLoverColor(index, value, lover)}/>
                 </td>
                 <td>
                   <div className="flex flex-row gap-2">
