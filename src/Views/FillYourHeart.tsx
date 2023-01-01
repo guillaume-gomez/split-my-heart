@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Form, { LoverInterface } from "../Components/Form";
+
+import Hero from "../Components/Hero"
 
 export interface LoverApiInterface {
   n: string;
@@ -9,6 +11,7 @@ export interface LoverApiInterface {
 }
 
 function FillYourHeart() {
+  const formRef = useRef<HTMLDivElement>(null);
   let navigate = useNavigate();
   const location = useLocation();
 
@@ -22,15 +25,24 @@ function FillYourHeart() {
     return navigate(`/my-heart?name=${name}&params=${encodeURIComponent(JSON.stringify(compressedLovers))}`);
   }
 
+  function onClick() {
+    if(formRef && formRef.current) {
+      formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start'})
+    }
+  }
+
   return (
-    <div className="card w-full bg-neutral text-neutral-content">
-      <div className="card-body items-center text-center">
-        <h2 className="card-title">What does your heart look like ? 💛</h2>
-        <div className="w-11/12">
-          <Form onSubmit={submit} />
+    <>
+      <Hero onClick={onClick} />
+      <div ref={formRef} id="form" className="card w-full bg-neutral text-neutral-content">
+        <div className="card-body items-center text-center">
+          <h2 className="card-title">What does your heart look like ? 💛</h2>
+          <div className="w-11/12">
+            <Form onSubmit={submit} />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
