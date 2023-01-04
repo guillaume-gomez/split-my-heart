@@ -33,7 +33,6 @@ function FillYourHeart() {
 
   return (
     <>
-      <Hero onClick={onClick} />
       <div ref={formRef} id="form" className="card w-full bg-neutral text-neutral-content">
         <div className="card-body items-center text-center">
           <h2 className="card-title">What does your heart look like ? 💛</h2>

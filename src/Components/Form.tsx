@@ -96,12 +96,12 @@ function Form({ onSubmit: submitParams} : FormInterface) {
           </div>
           <div className="form-control max-w-xs">
             <label className="label">
-              <span className="label-text text-neutral-content">What is your name?</span>
+              <span className="label-text">What is your name?</span>
             </label>
             <input
               type="text"
               placeholder="Your name"
-              className="input input-bordered text-accent placeholder-pink-900"
+              className="input input-bordered text-primary"
               value={name}
               onChange={event => setName(event.target.value)}
             />

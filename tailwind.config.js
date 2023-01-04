@@ -17,22 +17,6 @@ module.exports = {
   theme: {
     extend: {},
   },
-  daisyui: {
-      themes: [
-        {
-          mytheme: {
-          "primary": "#DD2D4A",
-          "secondary": "#CBEEF3",
-          "accent": "#880D1E",
-          "neutral": "#F26A8D",
-          "base-100": "#F49CBB",
-          "info": "#66C7FF",
-          "success": "#87D039",
-          "warning": "#E3D664",
-          "error": "#FF1515",
-        },
-      },
-    ],
-  },
+  daisyui: {},
   plugins: [require("daisyui")],
 }

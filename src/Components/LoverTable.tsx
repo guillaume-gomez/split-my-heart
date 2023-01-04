@@ -54,7 +54,7 @@ function LoverTable({ lovers, deleteLover, changeLover, toggleLover } : LoverTab
         <tbody>
         { lovers.map((lover, index) => {
           return (
-              <tr className={`text-accent ${lover.edited ? "bg-secondary" : ""}`}
+              <tr className={`text-primary ${lover.edited ? "bg-secondary" : ""}`}
                 key={index}
                 onClick={(event)=> {
                   if(!lover.edited) {
