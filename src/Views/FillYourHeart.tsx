@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Form, { LoverInterface } from "../Components/Form";
 
-import Hero from "../Components/Hero"
+import PopUp from "../Components/PopUp";
 
 export interface LoverApiInterface {
   n: string;
@@ -33,6 +33,7 @@ function FillYourHeart() {
 
   return (
     <>
+      <PopUp />
       <div ref={formRef} id="form" className="card w-full bg-neutral text-neutral-content">
         <div className="card-body items-center text-center">
           <h2 className="card-title">What does your heart look like ? 💛</h2>
