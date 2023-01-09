@@ -1,11 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useCookies } from 'react-cookie';
+import { addMonths } from 'date-fns';
 
-interface PopUpProps {
-  //onClose: () => void;
-}
+const cookieName = "firstConnexion";
 
-function PopUp({  } : PopUpProps) {
+function PopUp() {
   const [open, setOpen] = useState<boolean>(true);
+  const [cookies, setCookie] = useCookies(['user']);
+
+  useEffect(() => {
+    if((cookies as any).firstConnexion) {
+      setOpen(false);
+    } else {
+      setCookie(cookieName as any, true, { path: '/', expires: addMonths(new Date(), 1) });
+      setOpen(true);
+    }
+  }, [setCookie, setOpen, cookies]);
 
   return (
     <div className={`modal ${open ? "modal-open" : ""}`}>

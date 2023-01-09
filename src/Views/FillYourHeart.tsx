@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { CookiesProvider } from "react-cookie";
 import { useLocation, useNavigate } from 'react-router-dom';
 import Form, { LoverInterface } from "../Components/Form";
 
@@ -32,7 +33,7 @@ function FillYourHeart() {
   }
 
   return (
-    <>
+    <CookiesProvider>
       <PopUp />
       <div ref={formRef} id="form" className="card w-full bg-neutral text-neutral-content">
         <div className="card-body items-center text-center">
@@ -42,7 +43,7 @@ function FillYourHeart() {
           </div>
         </div>
       </div>
-    </>
+    </CookiesProvider>
   );
 }
 
