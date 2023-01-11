@@ -2,4 +2,4 @@
 
 Show to people how much you love them
 
-[Try here](https://guillaume-gomez.github.io/split-my-heart/)
+[Share your love](https://guillaume-gomez.github.io/split-my-heart/)
