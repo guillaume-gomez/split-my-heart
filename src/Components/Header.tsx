@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
+import Logo from "../logo.svg";
+
 function Header() {
 
 
@@ -19,7 +21,9 @@ function Header() {
     </div>
   </div>
   <div className="navbar-center">
-    <Link to={"/"} className="btn btn-ghost normal-case text-xl">Split my heart</Link>
+    <Link to={"/"} className="btn btn-link h-28 normal-case text-xl">
+      <img src={Logo} className="h-full"/>
+    </Link>
   </div>
   <div className="navbar-end">
   </div>
