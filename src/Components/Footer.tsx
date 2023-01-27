@@ -4,8 +4,8 @@ function Footer() {
   return (
     <footer className="footer footer-center p-4 bg-base-300 text-base-content">
       <div className="flex flex-col gap-2">
-        <p>
-          Copyright © [2022 - 2023] -
+        <p className="text-lg">
+          [2022 - 2023] -
           <a className="link link-hover p-1" href="https://github.com/guillaume-gomez">
             Made by Guillaume Gomez
           </a>
